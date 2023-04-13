@@ -37,6 +37,7 @@ class ResourceParser(Parser):
     def parse(self, path: Path, source: Path, dest: Path):
         self.copy(path, source, dest)
 
+
 class MarkdownParser(Parser):
 
     extensions = ['.md', '.markdown']
@@ -46,11 +47,12 @@ class MarkdownParser(Parser):
         html = markdown(content.body)
         self.write(path, dest, html)
 
+
 class ReStructuredTextParser(Parser):
 
     def parse(self, path: Path, source: Path, dest: Path):
         content = Content.load(self.read(path))
-        html = publish_parts(content.body, writer_name='hmtl5')
+        html = publish_parts(content.body, writer_name='html5')
         self.write(path, dest, html['html_body'])
         sys.stdout.write('\x1b[1;32m{} converted to HTML. Metadata: {}\n')\
             .format(path.name, content)
