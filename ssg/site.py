@@ -34,9 +34,9 @@ class Site:
         if parser is not None:
             parser.parse(path, self.source, self.dest)
         else:
-            self.error('No parser for the {} extension, file skipped!').format(path.suffix)
+            self.error('No parser for the {} extension, file skipped!'.format(path.suffix))
 
     @staticmethod
     def error(message: str):
-        sys.stderr.write('\x1b[1;31m{}\n').format(message)
+        sys.stderr.write('\x1b[1;31m{}\n'.format(message))
 
