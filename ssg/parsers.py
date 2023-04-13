@@ -15,12 +15,10 @@ class Parser:
 
     def read(self, path: Path):
         with open(path, 'r') as file:
-            lines = file.readlines()
-        return [line.strip() for line in lines]
+            return file.read()
 
     def write(self, path: Path, dest: Path, content: str, ext: str = '.html'):
         full_path = self.dest / path.with_suffix(ext).name
-
         with open(full_path, 'w') as file:
             file.write(content)
 
@@ -33,7 +31,7 @@ class ResourceParser(Parser):
     extensions = [".jpg", ".png", ".gif", ".css", ".html"]
 
     def parse(self, path: Path, source: Path, dest: Path):
-        super.copy(path, source, dest)
+        self.copy(path, source, dest)
 
 
 

@@ -7,7 +7,7 @@ class Site:
     def __init__(self, source: str, dest: str, parsers: [] = None):
         self.source = Path(source)
         self.dest = Path(dest)
-        self.parsers = parsers or None
+        self.parsers = parsers or []
 
     def create_dir(self, path: Path) -> None:
         directory: Path = self.dest / path.relative_to(self.source)
